@@ -59,6 +59,10 @@ import java.util.Deque;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.calcite.linq4j.function.Function0;
+import org.apache.calcite.linq4j.function.Function1;
+import org.apache.calcite.runtime.ResultSetEnumerable;
+
 import static com.google.common.base.Preconditions.checkArgument;
 
 import static org.apache.calcite.linq4j.Nullness.castNonNull;
@@ -361,6 +365,53 @@ public interface CalcitePrepare {
     }
 
     public Enumerable<T> enumerable(DataContext dataContext) {
+//      if (bindable == null) {
+//        System.out.println("The object is null.");
+//      } else {
+//        System.out.println("The object is not null.");
+//      }
+//
+////      DataContext context = (javax.sql.DataSource) dataContext.getRootSchema().getSubSchema("main").unwrap(javax.sql.DataSource.class);
+//
+//      System.out.println("setTimeout Enter 1");
+//      Long queryStart = (Long) dataContext.get(DataContext.Variable.UTC_TIMESTAMP.camelName);
+//      System.out.println("setTimeout Enter 2");
+//      Object timeout = dataContext.get(DataContext.Variable.TIMEOUT.camelName);
+//      System.out.println("setTimeout Enter 3");
+
+//      final Function1 rowBuilderFactory = new Function1() {
+//        public Function0 apply(final java.sql.ResultSet resultSet) {
+//          return new Function0() {
+//            public Object apply() {
+//              try {
+//                final Object[] values = new Object[2];
+//                values[0] = resultSet.getInt(1);
+//                if (resultSet.wasNull()) {
+//                  values[0] = null;
+//                }
+//                values[1] = resultSet.getObject(2);
+//                return values;
+//              } catch (java.sql.SQLException e) {
+//                throw new RuntimeException(
+//                    e);
+//              }
+//            }
+//          }
+//          ;
+//        }
+//        public Object apply(final Object resultSet) {
+//          return apply(
+//              (java.sql.ResultSet) resultSet);
+//        }
+//      }
+//      ;
+//      ResultSetEnumerable enumerable1 = ResultSetEnumerable.of((javax.sql.DataSource) dataContext.getRootSchema().getSubSchema("main").unwrap(javax.sql.DataSource.class), "SELECT *\nFROM \"MY_TABLE_A\"", rowBuilderFactory);
+//      enumerable1.setTimeout(dataContext);
+//
+//      Enumerable<T> enumerable = enumerable1;
+
+//      dataContext.getRootSchema().getSubSchema("main").unwrap(javax.sql.DataSource.class);
+
       Enumerable<T> enumerable = castNonNull(bindable).bind(dataContext);
       if (maxRowCount >= 0) {
         // Apply limit. In JDBC 0 means "no limit". But for us, -1 means

@@ -492,9 +492,13 @@ public class CalcitePrepareImpl implements CalcitePrepare {
       Query<T> query,
       Type elementType,
       long maxRowCount) {
+
+    System.out.println("CalcitePrepareImpl: prepare_");
     if (SIMPLE_SQLS.contains(query.sql)) {
+      System.out.println("CalcitePrepareImpl: prepare_ -> simple prepare");
       return simplePrepare(context, castNonNull(query.sql));
     }
+    System.out.println("CalcitePrepareImpl: prepare_ -> non-simple prepare");
     final JavaTypeFactory typeFactory = context.getTypeFactory();
     CalciteCatalogReader catalogReader =
         new CalciteCatalogReader(
@@ -619,6 +623,7 @@ public class CalcitePrepareImpl implements CalcitePrepare {
       long maxRowCount,
       CalciteCatalogReader catalogReader,
       CalcitePreparingStmt preparingStmt) {
+    System.out.println("CalcitePrepareImpl: prepare2_");
     final JavaTypeFactory typeFactory = context.getTypeFactory();
 
     final RelDataType x;
@@ -1028,6 +1033,7 @@ public class CalcitePrepareImpl implements CalcitePrepare {
 
     private PreparedResult prepare_(Supplier<RelNode> fn,
         RelDataType resultType) {
+      System.out.println("CalcitePrepareImpl: rel prepare_");
       Class runtimeContextClass = Object.class;
       init(runtimeContextClass);
 

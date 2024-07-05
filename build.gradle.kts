@@ -361,6 +361,7 @@ allprojects {
             testImplementation(platform("org.junit:junit-bom"))
             testImplementation("org.junit.jupiter:junit-jupiter")
             testImplementation("org.hamcrest:hamcrest")
+            testImplementation("org.duckdb:duckdb_jdbc:0.10.2")
             if (project.props.bool("junit4", default = false)) {
                 // Allow projects to opt-out of junit dependency, so they can be JUnit5-only
                 testImplementation("junit:junit")

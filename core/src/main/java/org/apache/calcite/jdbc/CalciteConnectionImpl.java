@@ -461,6 +461,7 @@ abstract class CalciteConnectionImpl
     }
 
     @Override public synchronized @Nullable Object get(String name) {
+      System.out.println("###### DATCONTEXT GET: " + name);
       Object o = map.get(name);
       if (o == AvaticaSite.DUMMY_VALUE) {
         return null;

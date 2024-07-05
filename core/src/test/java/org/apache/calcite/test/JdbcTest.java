@@ -188,7 +188,7 @@ public class JdbcTest {
       Util.first(CalciteAssert.DB.scott,
           CalciteAssert.DatabaseInstance.HSQLDB.scott);
 
-  public static final String SCOTT_SCHEMA = "     {\n"
+  public static final String  SCOTT_SCHEMA = "     {\n"
       + "       type: 'jdbc',\n"
       + "       name: 'SCOTT',\n"
       + "       jdbcDriver: " + q(SCOTT.driver) + ",\n"

@@ -293,10 +293,14 @@ public class JdbcSchema implements Schema, Wrapper {
             tableDef.tableType == null
             ? null
             : tableDef.tableType.toUpperCase(Locale.ROOT).replace(' ', '_');
-        final TableType tableType =
+        TableType tableType =
             Util.enumVal(TableType.OTHER, tableTypeName2);
         if (tableType == TableType.OTHER  && tableTypeName2 != null) {
           LOGGER.info("Unknown table type: {}", tableTypeName2);
+        }
+        if (tableTypeName2 != null && tableTypeName2.equals("BASE_TABLE")){
+          tableType = TableType.TABLE;
+          LOGGER.info("[Workaround]: BASE_TABLE to TABLE");
         }
         final JdbcTable table =
             new JdbcTable(this, tableDef.tableCat, tableDef.tableSchem,

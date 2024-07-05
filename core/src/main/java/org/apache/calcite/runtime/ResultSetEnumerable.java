@@ -173,8 +173,11 @@ public class ResultSetEnumerable<T> extends AbstractEnumerable<T> {
   }
 
   public void setTimeout(DataContext context) {
+    System.out.println("setTimeout Enter 1");
     this.queryStart = (Long) context.get(DataContext.Variable.UTC_TIMESTAMP.camelName);
+    System.out.println("setTimeout Enter 2");
     Object timeout = context.get(DataContext.Variable.TIMEOUT.camelName);
+    System.out.println("setTimeout Enter 3");
     if (timeout instanceof Long) {
       this.timeout = (Long) timeout;
     } else {

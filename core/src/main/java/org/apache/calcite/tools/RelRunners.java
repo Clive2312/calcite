@@ -47,6 +47,7 @@ public class RelRunners {
         }
         return super.visit(scan);
       }
+
     };
     rel = rel.accept(shuttle);
     try (Connection connection = DriverManager.getConnection("jdbc:calcite:")) {

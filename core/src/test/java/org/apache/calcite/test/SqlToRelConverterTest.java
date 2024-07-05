@@ -4250,6 +4250,7 @@ class SqlToRelConverterTest extends SqlToRelTestBase {
         + "      down as down.mgr < PREV(down.mgr),\n"
         + "      up as up.mgr > NEXT(up.mgr)\n"
         + "  ) mr";
+    System.out.println("Hello, world2!");
     sql(sql).ok();
   }
 
